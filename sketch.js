@@ -19,6 +19,3 @@ window.onload = function () {
     const audio = new Audio('click-sound.mp3');
     audio.play();
 };
-
-//iujn
-//uhbuhb
