@@ -1,24 +1,42 @@
 <!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Valentijnskaart</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="sketch.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="hearts-container" id="heartsContainer"></div>
+    
     <div class="container">
-        <h1>💖 Happy Valentijnsdag! 💖</h1>
+      <h1>💖 Happy Valentijnsdag! 💖</h1>
+
+      <!-- Surprise-knop -->
+      <button id="surpriseButton">❤ Surprise!</button>
+      <button  id="matchmakingButton">🤝 matchmaking</button>
+
+      <!-- Verborgen container (nu met correct id "surpriseContainer") -->
+      <div id="surpriseContainer" class="hidden">
         <p>Klik op het hartje om een verrassing te zien!</p>
         <div class="heart" id="heart" onclick="showMessage()"></div>
         <p id="message" class="hidden">Jij bent geweldig! 💌</p>
+      </div>
+      <script
+        type="text/javascript"
+        async
+        src="https://tenor.com/embed.js"
+      ></script>
     </div>
+ 
+
     <audio id="backgroundMusic" loop>
-        <source src="background-music.mp3" type="audio/mpeg">
-        Je browser ondersteunt geen audio element.
+      <source src="4.mp3" type="audio/mpeg" />
     </audio>
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
