@@ -1,61 +1,89 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const heartsContainer = document.getElementById("heartsContainer");
-  const surpriseButton = document.getElementById("surpriseButton");
-  const surpriseContainer = document.getElementById("surpriseContainer");
-  const message = document.getElementById("message");
-  const heart = document.getElementById("heart");
+    const heartsContainer = document.getElementById("heartsContainer");
+    const surpriseButton = document.getElementById("surpriseButton");
+    const surpriseContainer = document.getElementById("surpriseContainer");
+    const message = document.getElementById("message");
+    const heart = document.getElementById("heart");
+    const backgroundMusic = document.getElementById("backgroundMusic");
+    const toggleMusicButton = document.getElementById("toggleMusicButton");
+    const matchmakingButton = document.getElementById("matchmakingButton");
+    const matchmakingContainer = document.getElementById("matchmakingContainer");
+    const matchmakingForm = document.getElementById("matchmakingForm");
+    const matchResult = document.getElementById("matchResult");
 
-  // Add floating hearts in the background
-  const heartCount = Math.floor(Math.random() * 6) + 15;
-  for (let i = 0; i < heartCount; i++) {
-    const heart = document.createElement("div");
-    heart.classList.add("heart-floating");
+    // 🎵 Muziek aan/uit functie
+    let isPlaying = false;
 
-    const heartImg = document.createElement("img");
-    heartImg.src = "heart.gif"; // Path to your heart GIF
-    heartImg.alt = "Heart";
-    heartImg.style.width = Math.random() * 40 + 30 + "px"; // Random size
+    function toggleMusic() {
+        if (isPlaying) {
+            backgroundMusic.pause();
+            toggleMusicButton.textContent = "🎵 Speel Muziek";
+        } else {
+            backgroundMusic.play().catch(error => console.log("Autoplay geblokkeerd:", error));
+            toggleMusicButton.textContent = "⏸ Stop Muziek";
+        }
+        isPlaying = !isPlaying;
+    }
 
-    heart.appendChild(heartImg);
+    toggleMusicButton.addEventListener("click", toggleMusic);
 
-    // Random position and animation
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "+" + Math.random() * 1000 + "px"; // Start off-screen
-    heart.style.animationDuration = Math.random() * 1 + 3 + "s";
+    backgroundMusic.addEventListener("ended", function () {
+        if (isPlaying) {
+            backgroundMusic.currentTime = 0;
+            backgroundMusic.play();
+        }
+    });
 
-    heartsContainer.appendChild(heart);
-  }
+    // 🎈 Achtergrond hartjes genereren
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart-floating");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        heartsContainer.appendChild(heart);
+    }
 
-  // Surprise button click event
-  surpriseButton.addEventListener("click", function () {
-    // Show the surprise container
-    surpriseContainer.classList.remove("hidden");
+    // 🎁 Surprise functie
+    surpriseButton.addEventListener("click", function () {
+        surpriseContainer.classList.remove("hidden");
+        surpriseButton.style.display = "none";
+    });
 
-    // Hide the surprise button after clicking
-    surpriseButton.style.display = "none";
-    matchmakingButton.style.display = "none";
-  });
+    // ❤️ Klik op het hartje
+    heart.addEventListener("click", function () {
+        message.classList.remove("hidden");
+        message.style.opacity = "1";
+    });
 
+    // 🤝 Matchmaking functie
+    matchmakingButton.addEventListener("click", function () {
+        matchmakingContainer.classList.remove("hidden2");
+        matchmakingButton.style.display = "none";
+        surpriseButton.style.display = "none";
+    });
 
+    matchmakingForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const name1 = document.getElementById("name1").value;
+        const name2 = document.getElementById("name2").value;
+        const dob1 = document.getElementById("dob1").value;
+        const dob2 = document.getElementById("dob2").value;
 
-  
-  matchmakingButton.addEventListener("click", function () {
-    
-    surpriseButton.style.display = "none";
-    matchmakingButton.style.display = "none";
-  });
+        // Gebruik localStorage om gegevens op te slaan en vergelijk de waarden
+        const savedData = JSON.parse(localStorage.getItem("matchData"));
 
-  // Function to show the secret message on clicking the heart
-  heart.addEventListener("click", function () {
+        if (savedData && savedData.name1 === name1 && savedData.name2 === name2 && savedData.dob1 === dob1 && savedData.dob2 === dob2) {
+            // Toon de eerder opgeslagen score
+            matchResult.textContent = `${savedData.score}%`;
+        } else {
+            // Bereken een score (hier simpel voor het voorbeeld)
+            const score = Math.floor(Math.random() * 80)+20;
+            matchResult.textContent = `${score}%`;
 
-    message.classList.remove("hidden");
-    message.style.opacity = "1";
-    // You can add more behavior like playing a sound or animation here
-  });
-
-  // Handle audio autoplay issues
-  const backgroundMusic = document.getElementById("backgroundMusic");
-  backgroundMusic
-    .play()
-    .catch((error) => console.log("Autoplay blocked:", error));
+            // Sla de gegevens en score op in localStorage
+            const matchData = { name1, name2, dob1, dob2, score };
+            localStorage.setItem("matchData", JSON.stringify(matchData));
+        }
+        
+    });
 });

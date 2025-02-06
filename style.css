@@ -1,146 +1,201 @@
+/* Algemene instellingen */
 body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffebee;
-  font-family: "Love Ya Like A Sister", cursive;
-  text-align: center;
-  overflow: hidden; /* Voorkomt scrollen */
-}
-
-/* Achtergrond-harten container */
-.hearts-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  
-}
-
-/* Stijl voor individuele zwevende hartjes */
-.heart-floating {
-  position: absolute;
-  color: #e91e63;
-  font-size: 30px;
-  opacity: 0.7;
-  animation: float 5s infinite ease-in-out;
-}
-/* dfjdfvdjhbkdbkdcbkdc */
-
-/* Animatie voor zwevende harten */
-@keyframes float {
-  0% {
-    transform: translateY(100vh) scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh) scale(1.2);
-    opacity: 0;
-  }
-}
-
-.container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.container1 {
-
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 15px;
-
-}
-h1 {
-  color: #e91e63;
-  font-size: 2.5rem;
-}
-
-/* Stijlen voor de Surprise-knop */
-button {
-  padding: 15px 25px;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #e91e63;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  display: block;
-  margin: 20px auto;
-}
-#matchmakingButton {
-
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffebee;
+    font-family: 'Love Ya Like A Sister', cursive;
+    text-align: center;
     overflow: hidden;
 }
 
+/* Achtergrond-hartjes */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Stijl voor de hartjes */
+.heart-floating {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('heart.gif'); /* Vervang door je hart-GIF */
+    background-size: cover;
+    opacity: 0.7;
+    animation: float 5s infinite ease-in-out;
+}
+
+/* Animatie voor zwevende hartjes */
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Hoofdcontainer */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Koptekst */
+h1 {
+    color: #e91e63;
+    font-size: 2.5rem;
+}
+
+/* Knoppen */
+button {
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #e91e63;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 20px auto;
+}
+
 button:hover {
-  background-color: #c2185b;
+    background-color: #c2185b;
 }
 
-/* Hartje */
+/* Hartje voor verrassing */
 .heart {
-  width: 100px;
-  height: 100px;
-  background-color: #e91e63;
-  position: relative;
-  transform: rotate(-45deg);
-  margin: 50px auto;
-  cursor: pointer;
-  animation: heartbeat 1.5s infinite;
+    width: 100px;
+    height: 100px;
+    background-color: #e91e63;
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 50px auto;
+    cursor: pointer;
+    animation: heartbeat 1.5s infinite;
 }
 
-.heart::before,
-.heart::after {
-  content: "";
-  width: 100px;
-  height: 100px;
-  background-color: #e91e63;
-  border-radius: 50%;
-  position: absolute;
+.heart::before, .heart::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: #e91e63;
+    border-radius: 50%;
+    position: absolute;
 }
 
 .heart::before {
-  top: -50px;
-  left: 0;
+    top: -50px;
+    left: 0;
 }
 
 .heart::after {
-  top: 0;
-  left: 50px;
+    top: 0;
+    left: 50px;
 }
 
+/* Animatie voor kloppend hart */
 @keyframes heartbeat {
-  0%,
-  100% {
-    transform: rotate(-45deg) scale(1);
-  }
-  50% {
-    transform: rotate(-45deg) scale(1.1);
-  }
+    0%, 100% {
+        transform: rotate(-45deg) scale(1);
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.1);
+    }
 }
 
-/* Verberg items standaard */
+/* Verborgen elementen */
 .hidden {
-  display: none;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 #message {
-  color: #e91e63;
-  font-size: 1.5rem;
-  margin-top: 20px;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
+    color: #e91e63;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 🎵 Muziekknop rechtsonder */
+#toggleMusicButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#toggleMusicButton:hover {
+    background-color: #c2185b;
+}
+
+#matchmakingContainer {
+    color: #e91e63;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.hidden2 {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Matchmaking form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    background-color: #e91e63;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #c2185b;
 }
