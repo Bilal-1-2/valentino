@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     surpriseButton.addEventListener("click", function () {
         surpriseContainer.classList.remove("hidden");
         surpriseButton.style.display = "none";
+        matchmakingButton.style.display = "none";
     });
 
     // ❤️ Klik op het hartje
@@ -72,18 +73,24 @@ document.addEventListener("DOMContentLoaded", function () {
         // Gebruik localStorage om gegevens op te slaan en vergelijk de waarden
         const savedData = JSON.parse(localStorage.getItem("matchData"));
 
+        let score;
         if (savedData && savedData.name1 === name1 && savedData.name2 === name2 && savedData.dob1 === dob1 && savedData.dob2 === dob2) {
-            // Toon de eerder opgeslagen score
-            matchResult.textContent = `${savedData.score}%`;
+            score = savedData.score;
+            matchResult.textContent = `${score}%`;
         } else {
-            // Bereken een score (hier simpel voor het voorbeeld)
-            const score = Math.floor(Math.random() * 80)+20;
+            score = Math.floor(Math.random() * 80) + 20;
             matchResult.textContent = `${score}%`;
 
-            // Sla de gegevens en score op in localStorage
             const matchData = { name1, name2, dob1, dob2, score };
             localStorage.setItem("matchData", JSON.stringify(matchData));
         }
-        
+
+        if (score < 50) {
+            const lowSound = new Audio("low.mp3");
+            lowSound.play();
+        } else {
+            const highSound = new Audio("high.mp3");
+            highSound.play();
+        }
     });
 });
