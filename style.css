@@ -1,4 +1,4 @@
-/* Algemene instellingen */
+
 body {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     overflow: hidden;
 }
 
-/* Achtergrond-hartjes */
+
 .hearts-container {
     position: fixed;
     top: 0;
@@ -23,18 +23,17 @@ body {
     overflow: hidden;
 }
 
-/* Stijl voor de hartjes */
+
 .heart-floating {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-image: url('heart.gif'); /* Vervang door je hart-GIF */
+    background-image: url('heart.gif'); 
     background-size: cover;
     opacity: 0.7;
     animation: float 5s infinite ease-in-out;
 }
 
-/* Animatie voor zwevende hartjes */
 @keyframes float {
     0% {
         transform: translateY(100vh) scale(1);
@@ -49,7 +48,6 @@ body {
     }
 }
 
-/* Hoofdcontainer */
 .container {
     background-color: #fff;
     padding: 20px;
@@ -57,13 +55,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Koptekst */
 h1 {
     color: #e91e63;
     font-size: 2.5rem;
 }
 
-/* Knoppen */
 button {
     padding: 15px 25px;
     font-size: 1.5rem;
@@ -81,7 +77,6 @@ button:hover {
     background-color: #c2185b;
 }
 
-/* Hartje voor verrassing */
 .heart {
     width: 100px;
     height: 100px;
@@ -112,7 +107,7 @@ button:hover {
     left: 50px;
 }
 
-/* Animatie voor kloppend hart */
+
 @keyframes heartbeat {
     0%, 100% {
         transform: rotate(-45deg) scale(1);
@@ -122,7 +117,7 @@ button:hover {
     }
 }
 
-/* Verborgen elementen */
+
 .hidden {
     display: none;
     opacity: 0;
@@ -137,7 +132,7 @@ button:hover {
     transition: opacity 1s ease-in-out;
 }
 
-/* 🎵 Muziekknop rechtsonder */
+
 #toggleMusicButton {
     position: fixed;
     bottom: 20px;
@@ -170,7 +165,7 @@ button:hover {
     transition: opacity 1s ease-in-out;
 }
 
-/* Matchmaking form styling */
+
 form {
     display: flex;
     flex-direction: column;

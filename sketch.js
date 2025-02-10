@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const matchmakingForm = document.getElementById("matchmakingForm");
     const matchResult = document.getElementById("matchResult");
 
-    // 🎵 Muziek aan/uit functie
+   
     let isPlaying = false;
 
     function toggleMusic() {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 🎈 Achtergrond hartjes genereren
+    
     for (let i = 0; i < 20; i++) {
         const heart = document.createElement("div");
         heart.classList.add("heart-floating");
@@ -43,20 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
         heartsContainer.appendChild(heart);
     }
 
-    // 🎁 Surprise functie
+    
     surpriseButton.addEventListener("click", function () {
         surpriseContainer.classList.remove("hidden");
         surpriseButton.style.display = "none";
         matchmakingButton.style.display = "none";
     });
 
-    // ❤️ Klik op het hartje
+    
     heart.addEventListener("click", function () {
         message.classList.remove("hidden");
         message.style.opacity = "1";
     });
 
-    // 🤝 Matchmaking functie
+   
     matchmakingButton.addEventListener("click", function () {
         matchmakingContainer.classList.remove("hidden2");
         matchmakingButton.style.display = "none";
@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const dob1 = document.getElementById("dob1").value;
         const dob2 = document.getElementById("dob2").value;
 
-        // Gebruik localStorage om gegevens op te slaan en vergelijk de waarden
         const savedData = JSON.parse(localStorage.getItem("matchData"));
 
         let score;

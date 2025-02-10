@@ -9,20 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Hartjes achtergrond -->
+
     <div class="hearts-container" id="heartsContainer"></div>
 
-    <!-- Hoofdcontainer -->
     <div class="container">
         <h1>💖 Happy Valentijnsdag! 💖</h1>
 
-        <!-- Surprise-knop -->
         <button id="surpriseButton">🎁 Surprise!</button>
         <button id="matchmakingButton">🤝 matchmaking</button>
 
-        <!-- Verborgen matchmaking container -->
         <div id="matchmakingContainer" class="hidden2">
-            <!-- Naam velden en geboortedatum velden -->
             <form id="matchmakingForm">
                 <label for="name1">Uw Naam:</label>
                 <input type="text" id="name1" name="name1" required>
@@ -37,7 +33,7 @@
             <div id="matchResult"></div>
         </div>
 
-        <!-- Verborgen verrassing -->
+       
         <div id="surpriseContainer" class="hidden">
             <p>Klik op het hartje om een verrassing te zien!</p>
             <div class="heart" id="heart" onclick="showMessage()"></div>
@@ -45,10 +41,10 @@
         </div>
     </div>
 
-    <!-- Muziekknop -->
+  
     <button id="toggleMusicButton">🎵 Speel Muziek</button>
 
-    <!-- Audio -->
+   
     <audio id="backgroundMusic" loop>
         <source src="4.mp3" type="audio/mpeg">
     </audio>
